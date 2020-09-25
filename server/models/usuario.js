@@ -1,7 +1,6 @@
 //
-
 //
-const mongoose = require('mongoose')
+const { Schema, model } = require('mongoose')
     //utilizamos el módulo de mongoose para evaluar que el email sea único
 const uniqueValidator = require('mongoose-unique-validator')
 
@@ -10,7 +9,8 @@ let rolesValidos = {
     message: '{VALUE} no es un rol válido'
 }
 
-let Schema = mongoose.Schema
+//Al requerir solo Schema y model ya no es necesario asignar a una variable Schema
+//let Schema = mongoose.Schema
 
 let usuarioShema = new Schema({
     nombre: {
@@ -57,4 +57,5 @@ usuarioShema.methods.toJSON = function() {
 
 usuarioShema.plugin(uniqueValidator, { message: '{PATH} debe de ser único' })
 
-module.exports = mongoose.model('Usuario', usuarioShema)
+module.exports = model('Usuario', usuarioShema);
+//module.exports = mongoose.model('Usuario', usuarioShema)

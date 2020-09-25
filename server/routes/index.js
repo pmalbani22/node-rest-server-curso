@@ -1,11 +1,16 @@
 /*
  */
-const express = require('express')
-const app = express()
+const router = require('express').Router();
+//Otra forma de de código
+// const {Router}= require ('express)
+//const router = express.Router()
 
 
-app.use(require('./login'))
-app.use(require('./usuario'))
+router.use(require('./login'))
+router.use(require('./usuario'))
+router.use(require('./categoria'))
+router.use(require('./producto'))
 
 
-module.exports = app
+
+module.exports = router
